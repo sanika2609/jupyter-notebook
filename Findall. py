@@ -1,0 +1,12 @@
+import re
+
+# Sample text
+text = "Alice went to the apple orchard and admired the art on the walls."
+
+# Regex pattern to find all words starting with the letter 'a'
+pattern = r'\ba\w*'  # \b ensures the word boundary, \w* matches the word starting with 'a'
+
+# Using re.findall to get all words starting with 'a'
+matches = re.findall(pattern, text)
+
+print(matches)
