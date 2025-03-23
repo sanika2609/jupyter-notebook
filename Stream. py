@@ -1,0 +1,25 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import ipywidgets as widgets
+from IPython.display import display
+
+# Create a simple plot that updates in real-time
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+# Plotting function
+fig, ax = plt.subplots()
+line, = ax.plot(x, y)
+
+# Update the plot in real-time
+def update_plot(change):
+    y = np.sin(x + change['new'])  # Shift the sine wave
+    line.set_ydata(y)
+    fig.canvas.draw()
+
+# Create a slider for real-time updates
+slider = widgets.FloatSlider(value=0, min=0, max=10, step=0.1)
+slider.observe(update_plot, names='value')
+
+display(slider)
+plt.show()
